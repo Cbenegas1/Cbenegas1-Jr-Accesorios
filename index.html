@@ -1,0 +1,621 @@
+ <!-- Indica al navegador que este documento es un archivo HTML5 estándar -->
+
+<!DOCTYPE html>
+
+<!-- Define el idioma principal de la página como español (es) -->
+
+<html lang="es">
+
+<head>
+
+    <!-- Define la codificación de caracteres como UTF-8 para admitir acentos y caracteres especiales -->
+
+    <meta charset="UTF-8">
+
+    <!-- Ajusta la escala de la pantalla para que la página sea responsiva en dispositivos móviles -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define el título que aparece en la pestaña del navegador -->
+
+    <title>Jr Motor - Venta de Autos y Equipamiento Vehicular</title>
+
+    <!-- ESTA ES LA LÍNEA QUE PONE EL LOGO EN LA PESTAÑA -->
+
+    <link rel="icon" type="image/png" href="jr.fondo.jpg">
+
+    <!-- Conecta el archivo de estilos externo (estilo.css) para darle diseño a la página -->
+
+    <link rel="stylesheet" href="estilo.css">
+
+    <!-- Carga el archivo de JavaScript (script.js) de forma diferida (defer) para no ralentizar la carga -->
+
+    <script src="script.js" defer></script>
+
+<!-- Cierra la sección de configuración del encabezado del documento -->
+
+</head>
+
+<body>
+
+
+    <div id="preloader">
+
+    <div class="preloader-content">
+
+        <img src="jr.fondo.jpg" alt="JR Motors" class="preloader-logo">
+
+        <div class="loader-bar-container">
+
+            <div class="loader-bar" id="loaderBar"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- Inicio del encabezado principal visible de la página web -->
+
+    <header>
+
+        <!-- Enlace que envuelve el logo y redirige a la sección inicial (#inicio) al hacer clic -->
+
+        <a href="#inicio" class="logo">
+
+            <!-- Muestra la imagen del logo desde el archivo 'jr.fondo.jpg' con un texto alternativo -->
+
+            <img src="jr.fondo.jpg" alt="JR Motors Logo">
+
+        <!-- Cierra el enlace del logo -->
+
+        </a>
+
+       
+
+        <!-- Menú de navegación principal -->
+
+        <nav>
+
+            <!-- Enlace interno que desplaza la página a la sección con id 'inicio' -->
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#quienes-somos">Historia</a>
+
+            <!-- Enlace interno que desplaza la página a la sección con id 'servicios' -->
+
+            <a href="#servicios">Servicios</a>
+
+            <!-- Enlace interno que desplaza la página a la sección con id 'galeria' -->
+
+            <a href="#Proyecto-Destacado">Proyecto Destacado</a>
+
+            <!-- Enlace interno que desplaza la página a la sección con id 'contacto' -->
+
+            <a href="#contacto">Contacto</a>
+
+        <!-- Cierra el menú de navegación -->
+
+        </nav>
+
+    <!-- Cierra la etiqueta de encabezado principal -->
+
+    </header>
+
+
+    <!-- Sección principal o portada con la clase 'hero' e identificador 'inicio' -->
+
+    <section class="hero" id="inicio">
+
+        <!-- Título principal de la sección de portada -->
+
+        <h2>Pasión Por Los Automóviles</h2>
+
+        <!-- Breve descripción o subtítulo comercial -->
+
+        <p>Compra y Venta de Autos, Polarizados, Luces, Radios y Accesorios</p>
+
+        
+
+        <!-- Opción 1: Enfoque en ventas y catálogo -->
+    <button onclick="mensaje()">Ver Servicios</button>
+
+    <!-- Cierra la sección portada -->
+
+    </section>
+
+
+
+       
+
+       <section id="quienes-somos">
+
+    <h2>Nuestra Historia</h2>
+
+    <div class="contenedor-quienes-somos">
+
+        <div class="texto-quienes-somos">
+
+            <h3>Cómo Nació JR Motor</h3>
+
+            <p>
+
+                <strong>JR Motor</strong> nació de una verdadera pasión por el mundo automotriz y del deseo de ofrecer un servicio transparente, confiable y de alta calidad en Caacupé. Lo que comenzó como un proyecto personal impulsado por el amor a los autos, se convirtió rápidamente en un taller integral de referencia para la comunidad.
+
+            </p>
+
+            <p>
+
+                Con el paso del tiempo, fuimos expandiendo nuestros servicios: desde la compra y venta de vehículos seleccionados, hasta especializarnos en equipamiento de vanguardia como instalaciones de sistemas de audio, luces LED, láminas de seguridad, polarizados y accesorios de alta gama.
+
+            </p>
+
+            <p>
+
+                Hoy en día, nuestra mayor satisfacción es ver a cada cliente salir con el auto de sus sueños o con su vehículo completamente equipado, sabiendo que detrás de cada trabajo hay dedicación, detalle y un compromiso firme con la excelencia.
+
+            </p>
+
+        </div>
+
+
+        <div class="valores">
+
+            <div class="item-valor">
+
+                <h4>Nuestra Misión</h4>
+
+                <p>Hacer realidad los sueños automotrices de nuestros clientes brindando vehículos de calidad y equipamiento vehicular profesional.</p>
+
+            </div>
+
+            <div class="item-valor">
+
+                <h4>Nuestra Visión</h4>
+
+                <p>Ser el taller y multimarcas de referencia en la región, destacados por la confianza, la innovación estética y el compromiso con cada detalle.</p>
+
+            </div>
+
+            <div class="item-valor">
+
+                <h4>Nuestros Valores</h4>
+
+                <p>Pasión por lo que hacemos, honestidad en cada trato, trabajo garantizado y atención cercana a la comunidad.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <div class="valores">
+
+            <div class="item-valor">
+
+                <h4>Experiencia y Calidad</h4>
+
+                <p>Trabajamos con los mejores productos y técnicas para asegurar acabados de primer nivel.</p>
+
+            </div>
+
+            <div class="item-valor">
+
+                <h4>Atención Personalizada</h4>
+
+                <p>Te asesoramos de forma cercana para encontrar la solución ideal para tu auto.</p>
+
+            </div>
+
+            <div class="item-valor">
+
+                <h4>Garantía y Confianza</h4>
+
+                <p>Tu satisfacción y la seguridad de tu vehículo son nuestra máxima prioridad.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- Sección dedicada a la lista de servicios con el identificador 'servicios' -->
+
+    <section id="servicios">
+
+        <!-- Título de la sección de servicios -->
+
+        <h2>Nuestros Servicios</h2>
+
+        <!-- Contenedor genérico utilizado para agrupar las tarjetas de servicios mediante CSS -->
+
+        <div class="contenedor">
+
+
+           
+
+           
+
+            <!-- Tarjeta individual: Compra y Venta de Autos -->
+
+            <div class="card">
+
+                <h3>Compra y Venta de Autos</h3>
+
+                <p>Compramos tu vehículo al mejor precio e intermediamos la venta de tu próximo auto.</p>
+
+            </div>
+
+
+            <!-- Tarjeta individual: Polarizado -->
+
+            <div class="card">
+
+                <h3>Polarizados</h3>
+
+                <p>Instalación profesional de láminas de control solar y seguridad vehicular.</p>
+
+            </div>
+
+
+            <!-- Tarjeta individual: Instalación de Luces -->
+
+            <div class="card">
+
+                <h3>Instalación de Luces</h3>
+
+                <p>Equipamiento con iluminación LED, luces Xenón y faros auxiliares.</p>
+
+            </div>
+
+
+            <!-- Tarjeta individual: Instalación de Radios -->
+
+            <div class="card">
+
+                <h3>Instalación de Radios</h3>
+
+                <p>Montaje de pantallas Android, radios con Apple CarPlay / Android Auto y Car Audio.</p>
+
+            </div>
+
+
+            <!-- Tarjeta individual: Instalación de Accesorios -->
+
+            <div class="card">
+
+                <h3>Instalación de Accesorios</h3>
+
+                <p>Equipamiento general: alarmas, sensores de retroceso, cámaras de reversa y más.</p>
+
+            </div>
+
+
+            <!-- Tarjeta individual: Suspensión -->
+
+            <div class="card">
+
+                <h3>Suspensión</h3>
+
+                <p>Modificaciones, ajustes deportivos y mantenimiento de suspensión.</p>
+
+            </div>
+
+
+        <!-- Cierra el contenedor de tarjetas -->
+
+        </div>
+
+    <!-- Cierra la sección de servicios -->
+
+    </section>
+
+
+    <!-- Sección reservada para mostrar la galería con el identificador 'galeria' -->
+
+    <section id="Proyecto-Destacado">
+
+        <!-- Título principal de la sección de galería -->
+
+        <h2>Proyecto Destacado</h2>
+
+        <!-- Contenedor genérico para centrar y organizar los elementos de la galería -->
+
+        <div class="contenedor">
+
+            <!-- Tarjeta individual que agrupa la imagen de la entrega y su respectivo mensaje -->
+
+            <div class="item-galeria">
+
+                <!-- Fotografía del cliente con el vehículo recién entregado ('jr.Auto1.jpg') -->
+
+                <img src="jrAuto1.jpg" alt="Agradecimiento por la compra del vehículo - JR Motor">
+
+                <!-- Bloque contenedor para el texto explicativo y la frase emotiva -->
+
+                <div class="descripcion-galeria">
+
+                    <!-- Título destacado de la tarjeta en la galería -->
+
+                    <h3>¡Un nuevo sueño cumplido!</h3>
+
+                    <!-- Mensaje de agradecimiento e inspiración dirigido a los clientes -->
+
+                    <p>Hacemos que los sueños se hagan realidad en cada persona que confía en nosotros.</p>
+
+                <!-- Cierra el bloque contenedor del texto explicativo -->
+
+                </div>
+
+            <!-- Cierra la tarjeta individual de la galería -->
+
+            </div>
+
+        <!-- Cierra el contenedor principal de la galería -->
+
+        </div>
+
+    <!-- Cierra la sección de galería -->
+
+    </section>
+
+
+    <!-- Sección con información de contacto, formulario a WhatsApp y ubicación física -->
+
+    <section id="contacto">
+
+        <!-- Título de la sección de contacto -->
+
+        <h2>Nuestra Ubicación Y Contacto</h2>
+
+       
+
+        <!-- Contenedor genérico para organizar el formulario y los datos de contacto -->
+
+        <div class="contenedor-contacto">
+
+           
+
+            <!-- Formulario interactivo para enviar datos directamente al WhatsApp -->
+
+            <form class="form-contacto" id="formWhatsApp" onsubmit="enviarWhatsApp(event)">
+
+                <h3>Contáctanos</h3>
+
+               
+
+                <div class="campo">
+
+                    <label for="nombre">Nombre y Apellido *</label>
+
+                    <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="telefono">Teléfono / WhatsApp *</label>
+
+                    <input type="tel" id="telefono" placeholder="Ej. 0984 123 456" required>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="servicio">Servicio de interés *</label>
+
+                    <select id="servicio" required>
+
+                        <option value="" disabled selected>Selecciona una opción</option>
+
+                        <option value="Compra / Venta de Autos">Compra / Venta de Autos</option>
+
+                        <option value="Polarizados">Polarizados</option>
+
+                        <option value="Instalación de Luces">Instalación de Luces</option>
+
+                        <option value="Instalación de Radios">Instalación de Radios</option>
+
+                        <option value="Instalación de Accesorios">Instalación de Accesorios</option>
+
+                        <option value="Suspensión">Suspensión</option>
+
+                        <option value="Otro">Otro servicio</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="mensaje">Consulta o Detalles *</label>
+
+                    <textarea id="mensaje" rows="4" placeholder="Escribe aquí tu consulta..." required></textarea>
+
+                </div>
+
+
+                <button type="submit" class="btn-enviar">Enviar Consulta a WhatsApp</button>
+
+            </form>
+
+
+            <!-- Bloque destinado a la información textual de contacto -->
+
+            <div class="info-contacto">
+
+                <h3>Visítanos</h3>
+
+                <p><strong>Dirección:</strong> General Roa, Caacupé</p>
+
+                <p><strong>Teléfono:</strong> 0984278165</p>
+
+                <p><strong>Horarios:</strong> Lunes a Sábados 07:00hs a 18:00hs</p>
+
+
+                <!-- Mapa interactivo -->
+
+                <div class="mapa">
+
+                    <iframe
+
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3468.222421944535!2d-57.14863762467248!3d-25.393990931467815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945c33806d3ebfe7%3A0x6271593e1a06b1c1!2sJR%20Accesorios%20Caacup%C3%A9!5e1!3m2!1ses!2spy!4v1785938826426!5m2!1ses!2spy"
+
+                        width="100%"
+
+                        height="250"
+
+                        style="border:0;"
+
+                        allowfullscreen=""
+
+                        loading="lazy"
+
+                        referrerpolicy="strict-origin-when-cross-origin">
+
+                    </iframe>
+
+                </div>
+
+            </div>
+
+
+        <!-- Cierra el contenedor flexible de la sección de contacto -->
+
+        </div>
+
+    <!-- Cierra la sección de contacto -->
+
+    </section>
+
+
+    <!-- Enlace flotante que redirige directamente al chat de WhatsApp con un mensaje prediseñado -->
+
+    <a href="https://wa.me/595984278165?text=Hola%20JR%20Motor,%20quiero%20consultar%20sobre%20un%20servicio" class="btn-whatsapp" target="_blank" aria-label="Chat en WhatsApp">
+
+        <!-- Gráfico vectorial en formato SVG para dibujar el ícono oficial de WhatsApp -->
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.17-.478 1.338-.94.166-.462.166-.856.116-.94-.05-.083-.182-.133-.38-.232z"/>
+
+        </svg>
+
+    <!-- Cierra el enlace del botón de WhatsApp -->
+
+    </a>
+
+
+    <!-- Pie de página con información legal y redes sociales -->
+
+    <footer>
+
+        <!-- Contenedor principal del pie de página -->
+
+        <div class="contenedor-footer">
+
+            <!-- Columna del pie de página con el nombre e información del taller -->
+
+            <div class="col-footer">
+
+                <!-- Nombre de la empresa en el pie de página -->
+
+                <h3>Jr Motor</h3>
+
+                <!-- Pequeña descripción del negocio -->
+
+                <p>Compra, venta y equipamiento vehicular profesional. Especialistas en polarizados, iluminación LED, audio y accesorios en general.</p>
+
+            <!-- Cierra la primera columna del pie de página -->
+
+            </div>
+
+
+            <!-- Columna destinada a los enlaces de redes sociales -->
+
+            <div class="col-footer">
+
+                <!-- Título del bloque de redes sociales -->
+
+                <h4>Síguenos</h4>
+
+                <!-- Contenedor flexible para alinear las redes sociales -->
+
+                <div class="redes-sociales">
+
+                    <!-- Enlace a Instagram -->
+
+                    <a href="https://www.instagram.com/jr_motorrs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+
+                        </svg>
+
+                        <span>Instagram</span>
+
+                    </a>
+
+                   
+
+                    <!-- Enlace a Facebook -->
+
+                    <a href="https://www.facebook.com/people/JR-Motors/61587932694798/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+
+                        </svg>
+
+                        <span>Facebook</span>
+
+                    </a>
+
+                <!-- Cierra el contenedor de redes sociales -->
+
+                </div>
+
+            <!-- Cierra la columna de redes sociales -->
+
+            </div>
+
+        <!-- Cierra el contenedor de elementos del pie de página -->
+
+        </div>
+
+
+        <!-- Bloque reservado para los derechos de autor -->
+
+        <div class="copyright">
+
+            <p>&copy; 2026 Jr Motor. Todos los derechos reservados.</p>
+
+        <!-- Cierra el bloque de derechos de autor -->
+
+        </div>
+
+    <!-- Cierra la etiqueta del pie de página -->
+
+    </footer>
+
+
+<!-- Cierra el cuerpo visible de la página -->
+
+</body>
+
+<!-- Cierra la etiqueta principal del documento HTML -->
+
+</html> 
