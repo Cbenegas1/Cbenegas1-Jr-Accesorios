@@ -1,29 +1,49 @@
 /* ==========================================
-   1. RESET Y CONFIGURACIÓN GLOBAL
+   1. RESET Y VARIABLES GLOBALES
    ========================================== */
-/* Elimina márgenes por defecto y configura el modelo de caja */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Asegura que el padding no altere el ancho final */
+    box-sizing: border-box;
 }
 
-/* Tipografía base, desplazamiento suave y colores globales */
+:root {
+    --primary: #e63946;
+    --primary-glow: rgba(230, 57, 70, 0.4);
+    --bg-dark: #0a0c10;
+    --card-bg: #141821;
+    --text-light: #f1f1f1;
+    --text-muted: #94a3b8;
+}
+
 html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces del menú */
-    background-color: #0f1115;
-    color: #e0e0e0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
 }
 
 body {
     width: 100%;
-    overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
+    overflow-x: hidden;
 }
 
+/* ==========================================
+   2. ANIMACIONES ON SCROLL (.REVEAL)
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* ==========================================
-   2. PANTALLA DE CARGA (PRELOADER)
+   3. PRELOADER (PANTALLA DE CARGA)
    ========================================== */
 #preloader {
     position: fixed;
@@ -31,7 +51,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #0f0f11;
+    background-color: #07080a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +59,6 @@ body {
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* Clase añadida con JavaScript para ocultar el preloader */
 #preloader.oculto {
     opacity: 0;
     visibility: hidden;
@@ -47,51 +66,51 @@ body {
 
 .preloader-content {
     text-align: center;
-    width: 80%;
-    max-width: 320px;
+    max-width: 350px;
 }
 
-/* Animación de latido en el logo */
 .preloader-logo {
-    width: 160px;
-    height: auto;
-    margin-bottom: 25px;
-    animation: pulsoLogo 1.8s infinite ease-in-out;
+    width: 140px;
+    margin-bottom: 20px;
+    animation: pulseGlow 2s infinite ease-in-out;
 }
 
-/* Barra de progreso contenedora */
 .loader-bar-container {
     width: 100%;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
+    margin-bottom: 12px;
 }
 
-/* Relleno animado de la barra de carga */
 .loader-bar {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, #e63946, #ff6b6b);
-    border-radius: 10px;
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, #e63946, #ff758c);
+    box-shadow: 0 0 12px var(--primary-glow);
+    transition: width 0.2s ease;
 }
 
-@keyframes pulsoLogo {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.95;
-    }
-    50% {
-        transform: scale(1.04);
-        opacity: 1;
-    }
+.loader-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
 }
 
+@keyframes pulseGlow {
+    0%, 100% { 
+        transform: scale(1); 
+        filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.2)); 
+    }
+    50% { 
+        transform: scale(1.05); 
+        filter: drop-shadow(0 0 20px var(--primary-glow)); 
+    }
+}
 
 /* ==========================================
-   3. ENCABEZADO Y NAVEGACIÓN (HEADER)
+   4. ENCABEZADO Y NAVEGACIÓN (HEADER)
    ========================================== */
 header {
     position: fixed;
@@ -101,340 +120,450 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
-    background-color: rgba(15, 17, 21, 0.9);
-    backdrop-filter: blur(10px); /* Efecto cristal borroso */
+    padding: 20px 50px;
+    background: rgba(10, 12, 16, 0.7);
+    backdrop-filter: blur(15px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
 }
 
-/* Estilo del menú al hacer scroll hacia abajo */
 header.abajo {
-    background-color: rgba(10, 11, 14, 0.98);
-    padding: 10px 50px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    padding: 12px 50px;
+    background: rgba(7, 8, 10, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(230, 57, 70, 0.2);
 }
 
 .logo img {
-    height: 45px;
-    width: auto;
-    object-fit: contain;
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--text-light);
     text-decoration: none;
-    margin-left: 25px;
+    margin-left: 30px;
     font-weight: 600;
     font-size: 0.95rem;
+    position: relative;
+    padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: #e63946;
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
 }
 
+nav a:hover {
+    color: var(--primary);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
 
 /* ==========================================
-   4. SECCIÓN PRINCIPAL (HERO)
+   5. SECCIÓN PRINCIPAL (HERO)
    ========================================== */
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 120px 20px 40px 20px;
-    background-image: linear-gradient(rgba(10, 12, 16, 0.55), rgba(10, 12, 16, 0.8)), url("jr.auto.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding: 120px 20px 60px 20px;
+    background: url("jr.auto.jpg") center/cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(10, 12, 16, 0.4) 0%, rgba(10, 12, 16, 0.95) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.badge-premium {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(230, 57, 70, 0.15);
+    border: 1px solid var(--primary);
+    color: #ff6b7a;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 .hero h2 {
-    font-size: 3rem;
-    color: #ffffff;
+    font-size: 3.8rem;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
-    font-size: 1.2rem;
-    color: #cccccc;
-    margin-bottom: 30px;
-    max-width: 650px;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    line-height: 1.6;
 }
 
-.hero button {
-    padding: 12px 35px;
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    padding: 15px 38px;
     font-size: 1rem;
     font-weight: bold;
     color: #ffffff;
-    background-color: #e63946;
+    background: linear-gradient(135deg, #e63946 0%, #b81422 100%);
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 10px 25px var(--primary-glow);
+    transition: all 0.3s ease;
 }
 
-.hero button:hover {
-    background-color: #c1121f;
+.btn-primary:hover {
     transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.6);
 }
 
+.btn-secondary {
+    padding: 15px 38px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
 
 /* ==========================================
-   5. SECCIONES Y TÍTULOS GENERALES
+   6. MÉTRICAS / ESTADÍSTICAS DE CONFIANZA
+   ========================================== */
+.metricas {
+    background: #0d0f14;
+    padding: 50px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contenedor-metricas {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.item-metrica {
+    text-align: center;
+}
+
+.item-metrica .numero {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.item-metrica .plus {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.item-metrica p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   7. ESTRUCTURA Y TÍTULOS DE SECCIONES
    ========================================== */
 section {
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 section h2 {
     text-align: center;
-    font-size: 2.2rem;
-    color: #ffffff;
-    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
     position: relative;
 }
 
-/* Línea roja decorativa debajo de los títulos h2 */
 section h2::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 3px;
-    background-color: #e63946;
-    margin: 10px auto 0 auto;
+    width: 70px;
+    height: 4px;
+    background: var(--primary);
+    margin: 15px auto 0 auto;
     border-radius: 2px;
+    box-shadow: 0 0 10px var(--primary-glow);
 }
-
 
 /* ==========================================
-   6. CONTENEDORES Y TARJETAS UNIFICADAS
-   ========================================== */
-/* Contenedor flexible que alinea y centra las tarjetas */
-.contenedor,
-.valores {
-    display: flex;
-    justify-content: center;
-    align-items: stretch; /* Estira todas las tarjetas a la misma altura en la fila */
-    gap: 25px;
-    flex-wrap: wrap; /* Permite que bajen si no caben en pantalla */
-    max-width: 1200px;
-    margin: 40px auto 0 auto;
-}
-
-#servicios {
-    background-color: #14171d;
-}
-
-/* REGLA UNIFICADA: Tamaño idéntico para Servicios (.card) y Valores (.item-valor) */
-.card,
-.item-valor {
-    background-color: #1e222b;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 30px 25px;
-    border-radius: 12px;
-    
-    /* Dimensiones idénticas para todas las tarjetas */
-    width: 320px;
-    min-height: 220px;
-    
-    /* Centrado interno de contenido */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-/* Efecto al pasar el cursor */
-.card:hover,
-.item-valor:hover {
-    transform: translateY(-8px);
-    border-color: #e63946;
-}
-
-/* Títulos dentro de las tarjetas */
-.card h3,
-.item-valor h4 {
-    color: #ffffff;
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-}
-
-/* Párrafos dentro de las tarjetas */
-.card p,
-.item-valor p {
-    color: #a0a0a0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
-
-/* ==========================================
-   7. QUIÉNES SOMOS / SOBRE NOSOTROS
+   8. SECCIÓN HISTORIA (ESPACIADOS CORREGIDOS)
    ========================================== */
 #quienes-somos {
-    background-color: #0f1115;
+    background-color: var(--bg-dark);
 }
 
 .contenedor-quienes-somos {
-    max-width: 950px;
+    max-width: 1100px;
     margin: 0 auto;
+}
+
+.texto-quienes-somos {
+    max-width: 850px;
+    margin: 0 auto 60px auto;
     text-align: center;
 }
 
 .texto-quienes-somos h3 {
-    font-size: 1.6rem;
-    color: #e63946;
+    font-size: 1.8rem;
+    color: var(--primary);
     margin-bottom: 20px;
     font-weight: 700;
 }
 
 .texto-quienes-somos p {
-    color: #cccccc;
+    color: var(--text-muted);
     font-size: 1.05rem;
     line-height: 1.8;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
+.texto-quienes-somos p:last-child {
+    margin-bottom: 0;
+}
 
 /* ==========================================
-   8. GALERÍA
+   9. TARJETAS 3D (SERVICIOS Y VALORES)
+   ========================================== */
+.contenedor, .valores {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-3d {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 35px 28px;
+    border-radius: 16px;
+    width: 340px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-3d:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(230, 57, 70, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 57, 70, 0.15);
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card h3, .item-valor h4 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.card p, .item-valor p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   10. PROYECTO DESTACADO Y GALERÍA
    ========================================== */
 .item-galeria {
-    background-color: #1e222b;
-    border-radius: 12px;
+    background: var(--card-bg);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.galeria-img-container {
+    position: relative;
+    overflow: hidden;
 }
 
 .item-galeria img {
     width: 100%;
-    height: 550px;
+    height: 500px;
     object-fit: cover;
-    display: block;
+    transition: transform 0.6s ease;
+}
+
+.item-galeria:hover img {
+    transform: scale(1.05);
+}
+
+.tag-entregado {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .descripcion-galeria {
-    padding: 20px 25px;
+    padding: 30px;
     text-align: center;
 }
 
 .descripcion-galeria h3 {
-    color: #e63946;
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
 }
 
 .descripcion-galeria p {
-    color: #cccccc;
+    color: var(--text-muted);
     font-size: 1rem;
-    font-style: italic;
 }
 
-
 /* ==========================================
-   9. SECCIÓN DE CONTACTO
+   11. FORMULARIO Y CONTACTO
    ========================================== */
 .contenedor-contacto {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 40px;
     max-width: 1100px;
     margin: 0 auto;
     flex-wrap: wrap;
 }
 
-.form-contacto, 
-.info-contacto {
+.form-contacto, .info-contacto {
     flex: 1;
-    min-width: 300px;
-    background-color: #1e222b;
-    padding: 30px;
-    border-radius: 12px;
+    min-width: 320px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.form-contacto h3, 
-.info-contacto h3 {
+.form-contacto h3, .info-contacto h3 {
     color: #ffffff;
     margin-bottom: 20px;
     font-size: 1.4rem;
 }
 
 .campo {
-    margin-bottom: 18px;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .campo label {
-    color: #cccccc;
-    font-size: 0.9rem;
-    margin-bottom: 6px;
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
-.campo input, 
-.campo select, 
-.campo textarea {
+.campo input, .campo select, .campo textarea {
     width: 100%;
-    padding: 12px 15px;
-    background-color: #14171d;
+    padding: 14px;
+    background: #0d0f14;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: #ffffff;
-    font-size: 0.95rem;
     outline: none;
     transition: border-color 0.3s ease;
 }
 
-.campo input:focus, 
-.campo select:focus, 
-.campo textarea:focus {
-    border-color: #e63946;
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    border-color: var(--primary);
 }
 
 .btn-enviar {
     width: 100%;
-    padding: 14px;
-    background-color: #e63946;
+    padding: 16px;
+    background: var(--primary);
     color: #ffffff;
     font-weight: bold;
-    font-size: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
 
 .btn-enviar:hover {
-    background-color: #c1121f;
-    transform: translateY(-2px);
+    background: #c1121f;
+    box-shadow: 0 8px 20px var(--primary-glow);
 }
 
 .info-contacto p {
     margin-bottom: 15px;
-    color: #cccccc;
+    color: var(--text-muted);
 }
 
 .info-contacto strong {
-    color: #e63946;
+    color: var(--primary);
 }
 
 .mapa {
@@ -443,47 +572,66 @@ section h2::after {
     overflow: hidden;
 }
 
-
 /* ==========================================
-   10. BOTÓN FLOTANTE WHATSAPP
+   12. BOTÓN WHATSAPP PULSANTE
    ========================================== */
 .btn-whatsapp {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25d366;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
     color: #ffffff;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     z-index: 1000;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #25d366;
+    opacity: 0.6;
+    z-index: -1;
+    animation: pulseRing 2s infinite ease-out;
+}
+
+@keyframes pulseRing {
+    0% { 
+        transform: scale(0.95); 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: scale(1.6); 
+        opacity: 0; 
+    }
 }
 
 .btn-whatsapp:hover {
     transform: scale(1.1);
-    background-color: #20ba5a;
 }
 
-
 /* ==========================================
-   11. PIE DE PÁGINA (FOOTER)
+   13. PIE DE PÁGINA (FOOTER)
    ========================================== */
 footer {
-    background-color: #0a0b0e;
+    background: #050608;
+    padding: 60px 20px 30px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 50px 20px 20px 20px;
 }
 
 .contenedor-footer {
     display: flex;
     justify-content: space-between;
     max-width: 1100px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 40px auto;
     flex-wrap: wrap;
     gap: 30px;
 }
@@ -493,39 +641,44 @@ footer {
     min-width: 250px;
 }
 
-.col-footer h3, 
-.col-footer h4 {
+.col-footer h3, .col-footer h4 {
     color: #ffffff;
     margin-bottom: 15px;
 }
 
 .col-footer p {
-    color: #888888;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+}
+
 .redes-sociales a {
-    color: #cccccc;
+    color: var(--text-muted);
     text-decoration: none;
-    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: color 0.3s ease;
 }
 
 .redes-sociales a:hover {
-    color: #e63946;
+    color: var(--primary);
 }
 
 .copyright {
     text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: #666666;
+    color: #475569;
     font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 25px;
 }
 
-
 /* ==========================================
-   12. DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+   14. DISEÑO RESPONSIVO (TELÉFONOS Y TABLETS)
    ========================================== */
 @media (max-width: 768px) {
     header {
@@ -539,25 +692,23 @@ footer {
     }
 
     nav a {
-        margin: 0 10px;
+        margin: 0 8px;
+        font-size: 0.85rem;
     }
 
     .hero h2 {
-        font-size: 2rem;
+        font-size: 2.3rem;
     }
 
     .contenedor-contacto {
         flex-direction: column;
     }
 
-    .item-galeria img {
-        height: 380px;
+    .card-3d {
+        width: 100%;
     }
 
-    /* En celulares pequeños las tarjetas ocuparán casi todo el ancho disponible */
-    .card,
-    .item-valor {
-        width: 100%;
-        max-width: 320px;
+    .item-galeria img {
+        height: 380px;
     }
 }
