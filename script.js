@@ -1,91 +1,138 @@
-// Función para el botón "Conócenos" en la sección Hero
-function mensaje() {
-    alert("¡Bienvenido a JR MOTOR!");
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-// 1. Control de la Pantalla de Carga (Preloader Lento)
-window.addEventListener('DOMContentLoaded', () => {
-    const loaderBar = document.getElementById('loaderBar');
-    const preloader = document.getElementById('preloader');
+    // 1. PRELOADER
+    const preloader = document.getElementById("preloader");
+    const loaderBar = document.getElementById("loaderBar");
 
-    let progreso = 0;
-    const incremento = 1.5;     // Avance pausado (cuanto menor sea, más lento)
-    const tiempoIntervalo = 40; // Se actualiza cada 40 milisegundos
-
-    const intervalo = setInterval(() => {
-        progreso += incremento;
-        if (loaderBar) loaderBar.style.width = progreso + '%';
-
-        if (progreso >= 100) {
-            clearInterval(intervalo);
+    if (preloader && loaderBar) {
+        let progreso = 0;
+        const intervaloCarga = setInterval(() => {
+            progreso += Math.floor(Math.random() * 12) + 8;
             
-            // Pausa con la barra llena antes de desvanecerse
-            setTimeout(() => {
-                if (preloader) preloader.classList.add('oculto');
-            }, 400);
-        }
-    }, tiempoIntervalo);
+            if (progreso >= 100) {
+                progreso = 100;
+                loaderBar.style.width = "100%";
+                clearInterval(intervaloCarga);
+                
+                setTimeout(() => {
+                    preloader.classList.add("oculto");
+                }, 300);
+            } else {
+                loaderBar.style.width = `${progreso}%`;
+            }
+        }, 60);
+    }
 
-    // Inicializa la animación suave de las tarjetas
-    const tarjetas = document.querySelectorAll(".card, .item-galeria");
-    tarjetas.forEach(el => {
-        el.style.transition = "all 0.6s ease-out";
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
+    // 2. HEADER CON SCROLL EFECTO
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+            header.classList.add("abajo");
+        } else {
+            header.classList.remove("abajo");
+        }
     });
 
-    mostrarElementos();
+    // 3. ANIMACIÓN 'SCROLL REVEAL'
+    const elementosReveal = document.querySelectorAll(".reveal");
+
+    const observerOption = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                
+                // Disparar contador de números si está en la sección de métricas
+                if(entry.target.classList.contains("item-metrica")) {
+                    animarContadores();
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOption);
+
+    elementosReveal.forEach(el => revealObserver.observe(el));
+
+    // 4. ANIMACIÓN DE NÚMEROS (CONTADORES)
+    let contadoresEjecutados = false;
+    function animarContadores() {
+        if (contadoresEjecutados) return;
+        contadoresEjecutados = true;
+
+        const numeros = document.querySelectorAll(".numero");
+        numeros.forEach(num => {
+            const objetivo = +num.getAttribute("data-target");
+            let inicio = 0;
+            const incremento = objetivo / 40;
+
+            const actualizarConteo = () => {
+                inicio += incremento;
+                if (inicio < objetivo) {
+                    num.innerText = Math.ceil(inicio);
+                    setTimeout(actualizarConteo, 40);
+                } else {
+                    num.innerText = objetivo;
+                }
+            };
+            actualizarConteo();
+        });
+    }
+
+    // 5. NAVEGACIÓN SUAVE
+    const enlacesNav = document.querySelectorAll('a[href^="#"]');
+    enlacesNav.forEach(enlace => {
+        enlace.addEventListener("click", function (e) {
+            e.preventDefault();
+            const objetivoId = this.getAttribute("href");
+            const objetivoSeccion = document.querySelector(objetivoId);
+
+            if (objetivoSeccion) {
+                const headerOffset = 80;
+                const elementoPosicion = objetivoSeccion.getBoundingClientRect().top;
+                const offsetPosicion = elementoPosicion + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosicion,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
 });
 
-// 2. Animación al hacer Scroll para las tarjetas
-function mostrarElementos() {
-    const tarjetas = document.querySelectorAll(".card, .item-galeria");
-    tarjetas.forEach(el => {
-        const posicion = el.getBoundingClientRect().top;
-        if (posicion < window.innerHeight - 100) {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }
-    });
-}
+// 6. FUNCIONES DE INTERACCIÓN EXTERNAS
+function mensaje() {
+    const seccionServicios = document.getElementById("servicios");
+    if (seccionServicios) {
+        const headerOffset = 80;
+        const elementoPosicion = seccionServicios.getBoundingClientRect().top;
+        const offsetPosicion = elementoPosicion + window.pageYOffset - headerOffset;
 
-// 3. Fondo oscuro en la barra superior al hacer Scroll
-function cambiarHeader() {
-    const header = document.querySelector("header");
-    if (window.scrollY > 50) {
-        header.classList.add("abajo");
-    } else {
-        header.classList.remove("abajo");
+        window.scrollTo({
+            top: offsetPosicion,
+            behavior: "smooth"
+        });
     }
 }
 
-// Escuchar evento Scroll
-window.addEventListener("scroll", () => {
-    mostrarElementos();
-    cambiarHeader();
-});
-
-// 4. Función para procesar y enviar el formulario a WhatsApp
 function enviarWhatsApp(event) {
     event.preventDefault();
 
-    const nombre = document.getElementById('nombre').value;
-    const telefono = document.getElementById('telefono').value;
-    const servicio = document.getElementById('servicio').value;
-    const mensajeTexto = document.getElementById('mensaje').value;
+    const numeroTelefono = "595984278165";
+    const nombre = document.getElementById("nombre").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const servicio = document.getElementById("servicio").value;
+    const consulta = document.getElementById("mensaje").value.trim();
 
-    const numeroWhatsApp = "595984278165";
+    const textoMensaje = `*¡Hola JR Motor! Nueva consulta desde la web:*%0A%0A` +
+        `👤 *Nombre:* ${encodeURIComponent(nombre)}%0A` +
+        `📞 *Contacto:* ${encodeURIComponent(telefono)}%0A` +
+        `🛠️ *Servicio de Interés:* ${encodeURIComponent(servicio)}%0A` +
+        `💬 *Consulta:* ${encodeURIComponent(consulta)}`;
 
-    const texto = `Hola JR Motor, mi nombre es *${nombre}*.\n\n` +
-                  `📱 *Teléfono:* ${telefono}\n` +
-                  `🛠️ *Servicio de Interés:* ${servicio}\n` +
-                  `💬 *Consulta:* ${mensajeTexto}`;
-
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-
-    window.open(url, '_blank');
-}
-function mensaje() {
-    // Redirige o desplaza la pantalla hasta la sección con id="servicios"
-    document.getElementById("servicios").scrollIntoView({ behavior: "smooth" });
+    window.open(`https://wa.me/${numeroTelefono}?text=${textoMensaje}`, "_blank");
 }
