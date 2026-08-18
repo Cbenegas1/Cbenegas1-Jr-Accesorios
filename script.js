@@ -1,138 +1,144 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    // 1. PRELOADER
-    const preloader = document.getElementById("preloader");
-    const loaderBar = document.getElementById("loaderBar");
-
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ==========================================
+    // 1. PRELOADER ANIMADO
+    // ==========================================
+    const preloader = document.getElementById('preloader');
+    const loaderBar = document.getElementById('loaderBar');
+    
     if (preloader && loaderBar) {
-        let progreso = 0;
-        const intervaloCarga = setInterval(() => {
-            progreso += Math.floor(Math.random() * 12) + 8;
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 15) + 5;
+            if (progress > 100) progress = 100;
             
-            if (progreso >= 100) {
-                progreso = 100;
-                loaderBar.style.width = "100%";
-                clearInterval(intervaloCarga);
-                
+            loaderBar.style.width = `${progress}%`;
+
+            if (progress === 100) {
+                clearInterval(interval);
                 setTimeout(() => {
-                    preloader.classList.add("oculto");
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
                 }, 300);
-            } else {
-                loaderBar.style.width = `${progreso}%`;
             }
-        }, 60);
+        }, 100);
     }
 
-    // 2. HEADER CON SCROLL EFECTO
-    const header = document.querySelector("header");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 40) {
-            header.classList.add("abajo");
-        } else {
-            header.classList.remove("abajo");
-        }
-    });
+    // ==========================================
+    // 2. REVELADO AL HACER SCROLL (SCROLL REVEAL)
+    // ==========================================
+    const revealElements = document.querySelectorAll('.reveal');
 
-    // 3. ANIMACIÓN 'SCROLL REVEAL'
-    const elementosReveal = document.querySelectorAll(".reveal");
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        const elementVisible = 120;
 
-    const observerOption = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
     };
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                
-                // Disparar contador de números si está en la sección de métricas
-                if(entry.target.classList.contains("item-metrica")) {
-                    animarContadores();
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOption);
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Ejecutar al cargar para elementos visibles inicialmente
 
-    elementosReveal.forEach(el => revealObserver.observe(el));
+    // ==========================================
+    // 3. CONTADORES ANIMADOS DE MÉTRICAS
+    // ==========================================
+    const numeros = document.querySelectorAll('.numero');
+    let animatedMetrics = false;
 
-    // 4. ANIMACIÓN DE NÚMEROS (CONTADORES)
-    let contadoresEjecutados = false;
-    function animarContadores() {
-        if (contadoresEjecutados) return;
-        contadoresEjecutados = true;
+    const animateMetrics = () => {
+        const sectionMetricas = document.querySelector('.metricas');
+        if (!sectionMetricas) return;
 
-        const numeros = document.querySelectorAll(".numero");
-        numeros.forEach(num => {
-            const objetivo = +num.getAttribute("data-target");
-            let inicio = 0;
-            const incremento = objetivo / 40;
+        const sectionPos = sectionMetricas.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
 
-            const actualizarConteo = () => {
-                inicio += incremento;
-                if (inicio < objetivo) {
-                    num.innerText = Math.ceil(inicio);
-                    setTimeout(actualizarConteo, 40);
-                } else {
-                    num.innerText = objetivo;
-                }
-            };
-            actualizarConteo();
-        });
-    }
+        if (sectionPos < windowHeight && !animatedMetrics) {
+            animatedMetrics = true;
 
-    // 5. NAVEGACIÓN SUAVE
-    const enlacesNav = document.querySelectorAll('a[href^="#"]');
-    enlacesNav.forEach(enlace => {
-        enlace.addEventListener("click", function (e) {
-            e.preventDefault();
-            const objetivoId = this.getAttribute("href");
-            const objetivoSeccion = document.querySelector(objetivoId);
+            numeros.forEach(num => {
+                const target = +num.getAttribute('data-target');
+                let count = 0;
+                const increment = Math.ceil(target / 50);
 
-            if (objetivoSeccion) {
-                const headerOffset = 80;
-                const elementoPosicion = objetivoSeccion.getBoundingClientRect().top;
-                const offsetPosicion = elementoPosicion + window.pageYOffset - headerOffset;
+                const updateCounter = () => {
+                    count += increment;
+                    if (count >= target) {
+                        num.innerText = target;
+                    } else {
+                        num.innerText = count;
+                        setTimeout(updateCounter, 30);
+                    }
+                };
 
-                window.scrollTo({
-                    top: offsetPosicion,
-                    behavior: "smooth"
-                });
-            }
-        });
+                updateCounter();
+            });
+        }
+    };
+
+    window.addEventListener('scroll', animateMetrics);
+
+    // ==========================================
+    // 4. MODO NEÓN (BOTÓN INTERACTIVO FLOTANTE)
+    // ==========================================
+    const toggleBtn = document.createElement('button');
+    toggleBtn.classList.add('btn-neon-toggle');
+    toggleBtn.setAttribute('aria-label', 'Alternar Modo Neón');
+    toggleBtn.innerHTML = '<i class="fa-solid fa-bolt"></i>';
+    document.body.appendChild(toggleBtn);
+
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('neon-mode');
+        const isNeon = document.body.classList.contains('neon-mode');
+        toggleBtn.style.color = isNeon ? '#00f3ff' : 'var(--accent-color)';
+        toggleBtn.style.borderColor = isNeon ? '#00f3ff' : 'var(--accent-color)';
+    });
+
+    // ==========================================
+    // 5. CURSOR SEGUIDOR PERSONALIZADO
+    // ==========================================
+    const cursorFollower = document.createElement('div');
+    cursorFollower.classList.add('cursor-follower');
+    document.body.appendChild(cursorFollower);
+
+    document.addEventListener('mousemove', (e) => {
+        cursorFollower.style.left = `${e.clientX}px`;
+        cursorFollower.style.top = `${e.clientY}px`;
     });
 });
 
-// 6. FUNCIONES DE INTERACCIÓN EXTERNAS
-function mensaje() {
-    const seccionServicios = document.getElementById("servicios");
-    if (seccionServicios) {
-        const headerOffset = 80;
-        const elementoPosicion = seccionServicios.getBoundingClientRect().top;
-        const offsetPosicion = elementoPosicion + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-            top: offsetPosicion,
-            behavior: "smooth"
-        });
-    }
-}
-
+// ==========================================
+// 6. ENVÍO DE FORMULARIO A WHATSAPP
+// ==========================================
 function enviarWhatsApp(event) {
     event.preventDefault();
 
-    const numeroTelefono = "595984278165";
-    const nombre = document.getElementById("nombre").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const servicio = document.getElementById("servicio").value;
-    const consulta = document.getElementById("mensaje").value.trim();
+    const telefonoDestino = "595984278165";
 
-    const textoMensaje = `*¡Hola JR Motor! Nueva consulta desde la web:*%0A%0A` +
-        `👤 *Nombre:* ${encodeURIComponent(nombre)}%0A` +
-        `📞 *Contacto:* ${encodeURIComponent(telefono)}%0A` +
-        `🛠️ *Servicio de Interés:* ${encodeURIComponent(servicio)}%0A` +
-        `💬 *Consulta:* ${encodeURIComponent(consulta)}`;
+    // Obtención de valores del formulario
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const auto = document.getElementById('auto').value.trim();
+    const claseAuto = document.getElementById('claseAuto').value;
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
 
-    window.open(`https://wa.me/${numeroTelefono}?text=${textoMensaje}`, "_blank");
+    // Estructuración del mensaje
+    let textoMensaje = `*¡Hola JR Accesorios! Deseo realizar una cotización.*\n\n`;
+    textoMensaje += `👤 *Nombre:* ${nombre}\n`;
+    textoMensaje += `📞 *Teléfono:* ${telefono}\n`;
+    textoMensaje += `🚗 *Vehículo:* ${auto} (${claseAuto})\n`;
+    textoMensaje += `🛠️ *Servicio de Interés:* ${servicio}\n`;
+    
+    if (mensaje !== "") {
+        textoMensaje += `📝 *Detalles adicionales:* ${mensaje}\n`;
+    }
+
+    // Codificación para URL y redirección
+    const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(textoMensaje)}`;
+    window.open(url, '_blank');
 }
