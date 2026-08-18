@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* =========================================================
+    /* =====================================================
        PRELOADER
-    ========================================================= */
+    ===================================================== */
 
     const preloader = document.getElementById('preloader');
     const loaderBar = document.getElementById('loaderBar');
@@ -29,28 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     preloader.style.opacity = '0';
                     preloader.style.visibility = 'hidden';
                 }, 300);
-
             }
 
         }, 100);
-
     }
 
 
-    /* =========================================================
+    /* =====================================================
        MENÚ MÓVIL
-    ========================================================= */
+    ===================================================== */
 
-    const menuToggle = document.querySelector(
-        '.menu-toggle, .menu-btn, #menu-toggle, #menuBtn, .hamburger'
-    );
+    const menuToggle = document.getElementById('menuToggle');
 
-    const navMenu = document.querySelector(
-        '.nav-menu, .menu, #nav-menu, #menu, nav ul'
-    );
+    // Busca el nav dentro del header
+    const navMenu = document.querySelector('header nav');
 
     if (menuToggle && navMenu) {
 
+        // Estado inicial
         menuToggle.setAttribute('aria-expanded', 'false');
 
         menuToggle.addEventListener('click', (event) => {
@@ -58,30 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             event.stopPropagation();
 
-            navMenu.classList.toggle('active');
+            const menuAbierto = navMenu.classList.toggle('active');
 
-            const abierto = navMenu.classList.contains('active');
+            menuToggle.classList.toggle('active', menuAbierto);
 
             menuToggle.setAttribute(
                 'aria-expanded',
-                abierto ? 'true' : 'false'
+                menuAbierto ? 'true' : 'false'
             );
-
-            menuToggle.classList.toggle('active', abierto);
 
             document.body.classList.toggle(
                 'menu-abierto',
-                abierto
+                menuAbierto
             );
-
         });
 
 
-        /* Cerrar menú al tocar un enlace */
-
+        // Cerrar menú al tocar un enlace
         const enlacesMenu = navMenu.querySelectorAll('a');
 
-        enlacesMenu.forEach(enlace => {
+        enlacesMenu.forEach((enlace) => {
 
             enlace.addEventListener('click', () => {
 
@@ -93,29 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     'false'
                 );
 
-                document.body.classList.remove(
-                    'menu-abierto'
-                );
-
+                document.body.classList.remove('menu-abierto');
             });
 
         });
 
 
-        /* Cerrar al tocar fuera del menú */
-
+        // Cerrar al tocar fuera del menú
         document.addEventListener('click', (event) => {
 
-            const clickDentroMenu =
-                navMenu.contains(event.target);
-
-            const clickBoton =
-                menuToggle.contains(event.target);
-
             if (
-                !clickDentroMenu &&
-                !clickBoton &&
-                navMenu.classList.contains('active')
+                navMenu.classList.contains('active') &&
+                !navMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
             ) {
 
                 navMenu.classList.remove('active');
@@ -126,23 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     'false'
                 );
 
-                document.body.classList.remove(
-                    'menu-abierto'
-                );
-
+                document.body.classList.remove('menu-abierto');
             }
 
         });
 
 
-        /* Cerrar menú con ESC */
+        // Cerrar menú cuando cambia a escritorio
+        window.addEventListener('resize', () => {
 
-        document.addEventListener('keydown', (event) => {
-
-            if (
-                event.key === 'Escape' &&
-                navMenu.classList.contains('active')
-            ) {
+            if (window.innerWidth > 768) {
 
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
@@ -152,64 +127,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     'false'
                 );
 
-                document.body.classList.remove(
-                    'menu-abierto'
-                );
-
-                menuToggle.focus();
-
+                document.body.classList.remove('menu-abierto');
             }
 
         });
-
     }
 
 
-    /* =========================================================
+    /* =====================================================
        ANIMACIONES REVEAL
-    ========================================================= */
+    ===================================================== */
 
-    const revealElements =
-        document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal');
 
     const revealOnScroll = () => {
 
         const windowHeight = window.innerHeight;
         const elementVisible = 120;
 
-        revealElements.forEach(element => {
+        revealElements.forEach((element) => {
 
             const elementTop =
                 element.getBoundingClientRect().top;
 
-            if (
-                elementTop <
-                windowHeight - elementVisible
-            ) {
-
+            if (elementTop < windowHeight - elementVisible) {
                 element.classList.add('active');
-
             }
 
         });
-
     };
 
-    window.addEventListener(
-        'scroll',
-        revealOnScroll,
-        { passive: true }
-    );
+    window.addEventListener('scroll', revealOnScroll);
 
     revealOnScroll();
 
 
-    /* =========================================================
-       CONTADORES DE MÉTRICAS
-    ========================================================= */
+    /* =====================================================
+       CONTADORES
+    ===================================================== */
 
-    const numeros =
-        document.querySelectorAll('.numero');
+    const numeros = document.querySelectorAll('.numero');
 
     let animatedMetrics = false;
 
@@ -218,29 +175,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const sectionMetricas =
             document.querySelector('.metricas');
 
-        if (!sectionMetricas) {
+        if (!sectionMetricas || animatedMetrics) {
             return;
         }
 
         const sectionPos =
             sectionMetricas.getBoundingClientRect().top;
 
-        const windowHeight =
-            window.innerHeight;
+        const windowHeight = window.innerHeight;
 
-        if (
-            sectionPos < windowHeight &&
-            !animatedMetrics
-        ) {
+        if (sectionPos < windowHeight) {
 
             animatedMetrics = true;
 
-            numeros.forEach(num => {
+            numeros.forEach((num) => {
 
                 const target =
                     Number(num.getAttribute('data-target'));
 
-                if (!Number.isFinite(target)) {
+                if (isNaN(target)) {
                     return;
                 }
 
@@ -261,42 +214,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         num.innerText = count;
 
-                        setTimeout(
-                            updateCounter,
-                            30
-                        );
-
+                        setTimeout(updateCounter, 30);
                     }
-
                 };
 
                 updateCounter();
 
             });
-
         }
-
     };
 
-    window.addEventListener(
-        'scroll',
-        animateMetrics,
-        { passive: true }
-    );
+    window.addEventListener('scroll', animateMetrics);
 
     animateMetrics();
 
 
-    /* =========================================================
+    /* =====================================================
        MODO NEÓN
-    ========================================================= */
+    ===================================================== */
 
-    const toggleBtn =
-        document.createElement('button');
+    const toggleBtn = document.createElement('button');
 
-    toggleBtn.classList.add(
-        'btn-neon-toggle'
-    );
+    toggleBtn.classList.add('btn-neon-toggle');
 
     toggleBtn.setAttribute(
         'aria-label',
@@ -316,31 +255,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleBtn.addEventListener('click', () => {
 
-        document.body.classList.toggle(
-            'neon-mode'
-        );
+        document.body.classList.toggle('neon-mode');
 
         const isNeon =
-            document.body.classList.contains(
-                'neon-mode'
-            );
+            document.body.classList.contains('neon-mode');
 
         toggleBtn.style.color =
-            isNeon
-                ? '#00f3ff'
-                : 'var(--accent-color)';
+            isNeon ? '#00f3ff' : 'var(--accent-color)';
 
         toggleBtn.style.borderColor =
-            isNeon
-                ? '#00f3ff'
-                : 'var(--accent-color)';
-
+            isNeon ? '#00f3ff' : 'var(--accent-color)';
     });
 
 
-    /* =========================================================
-       CURSOR PERSONALIZADO
-    ========================================================= */
+    /* =====================================================
+       CURSOR FOLLOWER
+    ===================================================== */
 
     const cursorFollower =
         document.createElement('div');
@@ -349,59 +279,45 @@ document.addEventListener('DOMContentLoaded', () => {
         'cursor-follower'
     );
 
-    document.body.appendChild(
-        cursorFollower
-    );
+    document.body.appendChild(cursorFollower);
 
 
-    document.addEventListener(
-        'mousemove',
-        (event) => {
+    document.addEventListener('mousemove', (event) => {
 
-            cursorFollower.style.left =
-                `${event.clientX}px`;
+        cursorFollower.style.left =
+            `${event.clientX}px`;
 
-            cursorFollower.style.top =
-                `${event.clientY}px`;
-
-        }
-    );
+        cursorFollower.style.top =
+            `${event.clientY}px`;
+    });
 
 
-    /* =========================================================
-       EVITAR SCROLL CUANDO EL MENÚ ESTÁ ABIERTO
-    ========================================================= */
+    /* =====================================================
+       TECLADO - ESC PARA CERRAR MENÚ
+    ===================================================== */
 
-    const controlarScroll = () => {
+    document.addEventListener('keydown', (event) => {
 
-        if (
-            document.body.classList.contains(
+        if (event.key === 'Escape') {
+
+            if (navMenu) {
+                navMenu.classList.remove('active');
+            }
+
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+
+                menuToggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+            }
+
+            document.body.classList.remove(
                 'menu-abierto'
-            )
-        ) {
-
-            document.body.style.overflow =
-                'hidden';
-
-        } else {
-
-            document.body.style.overflow =
-                '';
-
+            );
         }
-
-    };
-
-    const observerMenu =
-        new MutationObserver(controlarScroll);
-
-    observerMenu.observe(
-        document.body,
-        {
-            attributes: true,
-            attributeFilter: ['class']
-        }
-    );
+    });
 
 });
 
@@ -414,8 +330,7 @@ function enviarWhatsApp(event) {
 
     event.preventDefault();
 
-    const telefonoDestino =
-        "595984278165";
+    const telefonoDestino = '595984278165';
 
     const nombreElement =
         document.getElementById('nombre');
@@ -437,38 +352,27 @@ function enviarWhatsApp(event) {
 
 
     const nombre =
-        nombreElement
-            ? nombreElement.value.trim()
-            : '';
+        nombreElement ? nombreElement.value.trim() : '';
 
     const telefono =
-        telefonoElement
-            ? telefonoElement.value.trim()
-            : '';
+        telefonoElement ? telefonoElement.value.trim() : '';
 
     const auto =
-        autoElement
-            ? autoElement.value.trim()
-            : '';
+        autoElement ? autoElement.value.trim() : '';
 
     const claseAuto =
-        claseAutoElement
-            ? claseAutoElement.value
-            : '';
+        claseAutoElement ? claseAutoElement.value : '';
 
     const servicio =
-        servicioElement
-            ? servicioElement.value
-            : '';
+        servicioElement ? servicioElement.value : '';
 
     const mensaje =
-        mensajeElement
-            ? mensajeElement.value.trim()
-            : '';
+        mensajeElement ? mensajeElement.value.trim() : '';
 
 
     let textoMensaje =
-        `*¡Hola JR Accesorios! Deseo realizar una cotización.*\n\n`;
+        '*¡Hola JR Accesorios! Deseo realizar una cotización.*\n\n';
+
 
     textoMensaje +=
         `👤 *Nombre:* ${nombre}\n`;
@@ -487,7 +391,6 @@ function enviarWhatsApp(event) {
 
         textoMensaje +=
             `📝 *Detalles adicionales:* ${mensaje}\n`;
-
     }
 
 
@@ -495,10 +398,5 @@ function enviarWhatsApp(event) {
         `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(textoMensaje)}`;
 
 
-    window.open(
-        url,
-        '_blank',
-        'noopener,noreferrer'
-    );
-
+    window.open(url, '_blank');
 }
