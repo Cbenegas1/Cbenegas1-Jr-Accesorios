@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const btnMenu = document.getElementById('btnMenu');
+const navMenu = document.getElementById('navMenu');
+
+if (btnMenu && navMenu) {
+    btnMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Cierra el menú al tocar cualquier opción
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+}
     
     const preloader = document.getElementById('preloader');
     const loaderBar = document.getElementById('loaderBar');
