@@ -3,56 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JR Motor - Venta de Autos y Equipamiento Vehicular</title>
-    
-    <link rel="icon" type="image/jpeg" href="jr.fondo.jpg">
+    <title>JR Accesorios - Caacupé</title>
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="estilo.css">
-    
-    <script src="script.js" defer></script>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Preloader -->
+    <!-- PRELOADER ANIMADO -->
     <div id="preloader">
         <div class="preloader-content">
-            <img src="jr.fondo.jpg" alt="JR Motor" class="preloader-logo">
+            <img src="jr.fondo.jpg" alt="Logo JR Accesorios" class="preloader-logo">
             <div class="loader-bar-container">
                 <div class="loader-bar" id="loaderBar"></div>
             </div>
-            <p class="loader-text">Cargando la experiencia JR Motor...</p>
+            <p class="loader-text">Cargando experiencia JR...</p>
         </div>
     </div>
 
-    <!-- Header / Nav -->
+    <!-- HEADER Y NAVEGACIÓN -->
     <header>
-        <a href="#inicio" class="logo">
-            <img src="jr.fondo.jpg" alt="JR Motor Logo">
-        </a>
-        
+        <div class="logo">
+            <a href="#inicio">
+                <img src="jr.fondo.jpg" alt="Logo JR Accesorios">
+            </a>
+        </div>
         <nav>
             <a href="#inicio">Inicio</a>
-            <a href="#quienes-somos">Historia</a>
+            <a href="#nosotros">Nosotros</a>
             <a href="#servicios">Servicios</a>
-            <a href="#Proyecto-Destacado">Proyecto Destacado</a>
+            <a href="#Proyecto-Destacado">Proyectos</a>
             <a href="#contacto">Contacto</a>
         </nav>
     </header>
 
-    <!-- Hero Section con Efectos de Iluminación -->
-    <section class="hero" id="inicio">
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
-            <span class="badge-premium">EXCELENCIA AUTOMOTRIZ EN CAACUPÉ</span>
-            <h2>Pasión Por Los Automóviles</h2>
-            <p>Transformamos tu vehículo. Venta de autos seleccionados, iluminación LED, Car Audio y equipamiento de alta gama.</p>
+            <div>
+                <span class="badge-premium">EQUIPAMIENTO & ACCESORIOS AUTOMOTRICES</span>
+            </div>
+            <h1>JR ACCESORIOS</h1>
+            <p>Especialistas en equipamiento, tuning, iluminación LED Kojima, personalización, audio y ventas de vehículos en Caacupé.</p>
             <div class="hero-buttons">
-                <button onclick="mensaje()" class="btn-primary">Explorar Servicios</button>
-                <a href="#contacto" class="btn-secondary">Contactar Ahora</a>
+                <a href="#contacto" class="btn-primary"><i class="fa-solid fa-calendar-check"></i> Agendar Cita</a>
+                <a href="#Proyecto-Destacado" class="btn-secondary"><i class="fa-solid fa-car"></i> Ver Proyectos</a>
             </div>
         </div>
     </section>
 
-    <!-- Barra de Métricas / Confianza (Contadores Animados) -->
+    <!-- BARRA DE MÉTRICAS -->
     <section class="metricas">
         <div class="contenedor-metricas">
             <div class="item-metrica reveal">
@@ -60,211 +62,259 @@
                 <p>Vehículos Equipados</p>
             </div>
             <div class="item-metrica reveal">
-                <span class="numero" data-target="100">0</span><span class="plus">%</span>
-                <p>Garantía de Satisfacción</p>
-            </div>
-            <div class="item-metrica reveal">
-                <span class="numero" data-target="8">0</span><span class="plus">+</span>
+                <span class="numero" data-target="4">0</span><span class="plus">+</span>
                 <p>Años de Experiencia</p>
             </div>
+            <div class="item-metrica reveal">
+                <span class="numero" data-target="100">0</span><span class="plus">%</span>
+                <p>Garantía de Instalación</p>
+            </div>
         </div>
     </section>
 
-    <!-- Historia y Quiénes Somos -->
-    <section id="quienes-somos">
-        <h2 class="reveal">Nuestra Historia</h2>
-        <div class="contenedor-quienes-somos">
+    <!-- NOSOTROS -->
+    <section id="nosotros">
+        <h2 class="reveal">¿Quiénes Somos?</h2>
+        <div class="contenedor-nosotros">
             <div class="texto-quienes-somos reveal">
-                <h3>Cómo Nació JR Motor</h3>
-                <p>
-                    <strong>JR Motor</strong> nació de una verdadera pasión por el mundo automotriz y del deseo de ofrecer un servicio transparente, confiable y de alta calidad en Caacupé. Lo que comenzó como un proyecto personal, se convirtió rápidamente en un taller integral de referencia para la comunidad.
-                </p>
-                <p>
-                    Nos especializamos en equipamiento de vanguardia: desde la compra y venta de vehículos seleccionados hasta instalaciones de sistemas de audio, luces LED, láminas de seguridad, polarizados y accesorios.
-                </p>
+                <h3>Pasión por la Estética Automotriz</h3>
+                <p>En <strong>JR Accesorios</strong> transformamos vehículos cuidando cada detalle estético y funcional. Nos especializamos en equipamiento de alta gama, iluminación LED, sistemas de sonido y personalización completa para todas las marcas.</p>
             </div>
-
             <div class="valores">
-                <div class="item-valor card-3d reveal">
-                    <div class="icon-box">🏁</div>
-                    <h4>Nuestra Misión</h4>
-                    <p>Hacer realidad los sueños automotrices de nuestros clientes brindando vehículos de calidad y equipamiento vehicular profesional.</p>
+                <div class="item-valor reveal">
+                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Productos Premium</h4>
+                    <p>Accesorios e iluminación de marcas líderes con estándares de máxima durabilidad.</p>
                 </div>
-                <div class="item-valor card-3d reveal">
-                    <div class="icon-box">🏆</div>
-                    <h4>Nuestra Visión</h4>
-                    <p>Ser el taller y multimarcas de referencia en la región, destacados por la confianza, la innovación estética y la atención al detalle.</p>
+                <div class="item-valor reveal">
+                    <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h4>Instalación Prolija</h4>
+                    <p>Trabajos detallados y profesionales sin alterar la estética ni el cableado original.</p>
                 </div>
-                <div class="item-valor card-3d reveal">
-                    <div class="icon-box">⭐</div>
-                    <h4>Nuestros Valores</h4>
-                    <p>Pasión por lo que hacemos, honestidad en cada trato, trabajo garantizado y atención cercana a la comunidad.</p>
+                <div class="item-valor reveal">
+                    <div class="icon-box"><i class="fa-solid fa-user-check"></i></div>
+                    <h4>Atención Personalizada</h4>
+                    <p>Asesoramiento enfocado en potenciar el estilo y confort único de tu vehículo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Servicios -->
+    <!-- SERVICIOS -->
     <section id="servicios">
         <h2 class="reveal">Nuestros Servicios</h2>
         <div class="contenedor">
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Compra y Venta de Autos</h3>
-                <p>Compramos tu vehículo al mejor precio e intermediamos la venta de tu próximo auto con total transparencia.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-lightbulb icon-box"></i>
+                <h3>Iluminación LED Kojima</h3>
+                <p>Instalación de lupas, focos y barras LED Kojima de alta potencia para máxima visibilidad nocturna.</p>
             </div>
-
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Polarizados Pro</h3>
-                <p>Instalación profesional de láminas de control solar, nanocerámicas y seguridad vehicular.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-car-side icon-box"></i>
+                <h3>Equipamiento & Tuning</h3>
+                <p>Polarizados, alerones, spoilers, parachoques y accesorios de personalización exterior.</p>
             </div>
-
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Iluminación LED & Xenón</h3>
-                <p>Potencia tu visión nocturna. Equipamiento con luces LED de alta densidad, lupas y faros auxiliares.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-compact-disc icon-box"></i>
+                <h3>Audio & Confort Interior</h3>
+                <p>Radios Android, pantallas, sistemas de sonido, parlantes y tapicería personalizada.</p>
             </div>
-
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Sistemas Car Audio</h3>
-                <p>Montaje de pantallas Android, radios con Apple CarPlay / Android Auto, amplificadores y subwoofers.</p>
-            </div>
-
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Accesorios & Alarma</h3>
-                <p>Equipamiento integral: alarmas volumétricas, sensores de retroceso, cámaras HD y cierres centralizados.</p>
-            </div>
-
-            <div class="card card-3d reveal">
-                <div class="card-glow"></div>
-                <h3>Suspensión Deportiva</h3>
-                <p>Modificaciones, ajustes de altura, kit de espirales deportivos y mantenimiento preventivo.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-handshake icon-box"></i>
+                <h3>Venta de Vehículos</h3>
+                <p>Unidades seleccionadas, inspeccionadas estéticamente y equipadas listas para su entrega.</p>
             </div>
         </div>
     </section>
 
-    <!-- Proyecto Destacado / Galería -->
+    <!-- PROYECTOS -->
     <section id="Proyecto-Destacado">
-        <h2 class="reveal">Proyecto Destacado</h2>
-        <div class="contenedor">
+        <h2 class="reveal">Proyectos Y Entregas Destacadas</h2>
+        <div class="contenedor-galeria-grid">
             <div class="item-galeria reveal">
                 <div class="galeria-img-container">
-                    <img src="jrAuto1.jpg" alt="Agradecimiento por la compra del vehículo - JR Motor">
+                    <img src="jr.auto.jpg" alt="Hummer H2" loading="lazy">
+                    <div class="tag-entregado">PROYECTO TOP</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Hummer H2 - Custom Build</h3>
+                    <p>Equipamiento integral exterior, iluminación LED y personalización completa frente a nuestro local.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <video autoplay loop muted playsinline poster="Entrega3.jpg">
+                        <source src="AutoVitzBlanco.mp4" type="video/mp4">
+                    </video>
+                    <div class="tag-entregado">VIDEO</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Toyota Vitz RS</h3>
+                    <p>Muestra detallada del equipamiento y acabado estético final.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <video autoplay loop muted playsinline poster="Entrega1.jpg">
+                        <source src="Entrega2.mp4" type="video/mp4">
+                    </video>
+                    <div class="tag-entregado">VIDEO</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Momento de la Entrega</h3>
+                    <p>Recepción del vehículo personalizado por su dueño satisfecho.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <img src="JrLuces.jpg" alt="Luces LED Kojima" loading="lazy">
+                    <div class="tag-entregado">ILUMINACIÓN</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Iluminación LED X2</h3>
+                    <p>Potencia, alcance y estética nocturna con lupas Kojima de alta gama.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <img src="AutoInterior.jpg" alt="Interior" loading="lazy">
+                    <div class="tag-entregado">INTERIOR</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Confort e Interior</h3>
+                    <p>Limpieza de tapizados, detalles en fibra de carbono y equipamiento de audio.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <img src="Entrega1.jpg" alt="Toyota Vitz Gris" loading="lazy">
                     <div class="tag-entregado">¡ENTREGADO!</div>
                 </div>
                 <div class="descripcion-galeria">
-                    <h3>Un Nuevo Sueño Cumplido</h3>
-                    <p>Garantizamos que cada cliente se lleve una máquina impecable y totalmente equipada.</p>
+                    <h3>Toyota Vitz RS</h3>
+                    <p>Vehículo equipado y listo para su entrega en nuestro local.</p>
+                </div>
+            </div>
+            <div class="item-galeria reveal">
+                <div class="galeria-img-container">
+                    <img src="Entrega3.jpg" alt="Entrega Vitz Blanco" loading="lazy">
+                    <div class="tag-entregado">¡ENTREGADO!</div>
+                </div>
+                <div class="descripcion-galeria">
+                    <h3>Cliente Satisfecho</h3>
+                    <p>Atención personalizada y asesoramiento en cada entrega de unidad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto y Ubicación -->
+    <!-- CONTACTO & UBICACIÓN -->
     <section id="contacto">
-        <h2 class="reveal">Nuestra Ubicación Y Contacto</h2>
+        <h2 class="reveal">Contacto & Ubicación</h2>
         <div class="contenedor-contacto">
             
-            <form class="form-contacto reveal" id="formWhatsApp" onsubmit="enviarWhatsApp(event)">
-                <h3>Agenda tu Turno o Consulta</h3>
+            <!-- FORMULARIO -->
+            <div class="form-contacto reveal">
+                <h3><i class="fa-solid fa-car-tunnel"></i> Envíanos un Mensaje</h3>
+                <form onsubmit="enviarWhatsApp(event)">
+                    <div class="campo">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre y apellido" required>
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Teléfono / WhatsApp</label>
+                        <input type="tel" id="telefono" placeholder="Ej: 0984123456" required>
+                    </div>
 
-                <div class="campo">
-                    <label for="nombre">Nombre y Apellido *</label>
-                    <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
-                </div>
+                    <!-- CAMPOS DEL VEHÍCULO -->
+                    <div class="fila-doble">
+                        <div class="campo">
+                            <label for="auto">¿Qué Auto Tienes? (Marca, Modelo y Año)</label>
+                            <input type="text" id="auto" placeholder="Ej: Toyota Vitz 2010" required>
+                        </div>
+                        <div class="campo">
+                            <label for="claseAuto">Clase / Tipo de Vehículo</label>
+                            <select id="claseAuto" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Hatchback / Compacto">Hatchback / Compacto</option>
+                                <option value="Sedán">Sedán</option>
+                                <option value="SUV / Crossover">SUV / Crossover</option>
+                                <option value="Camioneta Pick-up">Camioneta Pick-up</option>
+                                <option value="Todoterreno / 4x4">Todoterreno / 4x4</option>
+                                <option value="Deportivo / Coupe">Deportivo / Coupe</option>
+                                <option value="Furgón / Utilitario">Furgón / Utilitario</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="campo">
-                    <label for="telefono">Teléfono / WhatsApp *</label>
-                    <input type="tel" id="telefono" placeholder="Ej. 0984 123 456" required>
-                </div>
-
-                <div class="campo">
-                    <label for="servicio">Servicio de interés *</label>
-                    <select id="servicio" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="Compra / Venta de Autos">Compra / Venta de Autos</option>
-                        <option value="Polarizados">Polarizados</option>
-                        <option value="Instalación de Luces">Instalación de Luces</option>
-                        <option value="Instalación de Radios">Instalación de Radios</option>
-                        <option value="Instalación de Accesorios">Instalación de Accesorios</option>
-                        <option value="Suspensión">Suspensión</option>
-                        <option value="Otro">Otro servicio</option>
-                    </select>
-                </div>
-
-                <div class="campo">
-                    <label for="mensaje">Consulta o Detalles *</label>
-                    <textarea id="mensaje" rows="4" placeholder="Escribe aquí tu consulta..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn-enviar">
-                    <span>Enviar a WhatsApp</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494z"/></svg>
-                </button>
-            </form>
-
-            <div class="info-contacto reveal">
-                <h3>Visítanos en Taller</h3>
-                <p><strong>Dirección:</strong> General Roa, Caacupé</p>
-                <p><strong>Teléfono:</strong> 0984278165</p>
-                <p><strong>Horarios:</strong> Lunes a Sábados 07:00hs a 18:00hs</p>
-
-                <div class="mapa">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3468.222421944535!2d-57.14863762467248!3d-25.393990931467815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945c33806d3ebfe7%3A0x6271593e1a06b1c1!2sJR%20Accesorios%20Caacup%C3%A9!5e1!3m2!1ses!2spy!4v1785938826426!5m2!1ses!2spy"
-                        width="100%"
-                        height="250"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
-                </div>
+                    <div class="campo">
+                        <label for="servicio">Servicio de Interés</label>
+                        <select id="servicio" required>
+                            <option value="Iluminación LED Kojima">Iluminación LED Kojima</option>
+                            <option value="Equipamiento y Tuning Exterior">Equipamiento y Tuning Exterior</option>
+                            <option value="Audio y Confort Interior">Audio y Confort Interior</option>
+                            <option value="Mantenimiento Estético Integral">Mantenimiento Estético Integral</option>
+                            <option value="Consulta sobre Venta de Vehículos">Consulta sobre Venta de Vehículos</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="mensaje">Detalles adicionales</label>
+                        <textarea id="mensaje" rows="3" placeholder="Escribe aquí los accesorios o detalles que te gustaría instalar..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Cotización a WhatsApp
+                    </button>
+                </form>
             </div>
+
+            <!-- INFORMACIÓN DE CONTACTO -->
+            <div class="info-contacto reveal">
+                <h3>Información de JR Accesorios</h3>
+                <p><strong><i class="fa-solid fa-location-dot"></i> Dirección:</strong> Caacupé, Paraguay</p>
+                <p><strong><i class="fa-brands fa-whatsapp"></i> WhatsApp:</strong> 0984 278 165</p>
+                <p><strong><i class="fa-solid fa-clock"></i> Horario:</strong> Lunes a Sábados de 07:30 a 18:00 hs</p>
+                
+                <div class="mapa">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.425!2d-57.1423!3d-25.3861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDIzJzA4LjIiUyA1N8KwMDgnMzIuMyJX!5e0!3m2!1ses!2spy!4v1700000000000!5m2!1ses!2spy" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
 
         </div>
     </section>
 
-    <!-- Botón WhatsApp con Pulso -->
-    <a href="https://wa.me/595984278165?text=Hola%20JR%20Motor,%20quiero%20consultar%20sobre%20un%20servicio" class="btn-whatsapp" target="_blank" aria-label="Chat en WhatsApp">
-        <div class="whatsapp-pulse"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.17-.478 1.338-.94.166-.462.166-.856.116-.94-.05-.083-.182-.133-.38-.232z"/>
-        </svg>
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/595984278165?text=¡Hola%20JR%20Accesorios!%20Deseo%20realizar%20una%20consulta." class="btn-whatsapp" target="_blank" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp fa-2x"></i>
     </a>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <div class="contenedor-footer">
             <div class="col-footer">
-                <h3>JR Motor</h3>
-                <p>Venta de vehículos seleccionados y taller especializado en equipamiento vehicular de alta performance.</p>
+                <h3>JR ACCESORIOS</h3>
+                <p>Pasión por el detalle, la iluminación Kojima y la estética automotriz en Caacupé.</p>
             </div>
-
             <div class="col-footer">
                 <h4>Síguenos</h4>
                 <div class="redes-sociales">
-                    <a href="https://www.instagram.com/jr_motorrs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
-                        <span>Instagram</span>
-                    </a>
-                    
-                    <a href="https://www.facebook.com/people/JR-Motors/61587932694798/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
-                        <span>Facebook</span>
-                    </a>
+                    <a href="https://www.instagram.com/jr_motorrs/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61587932694798" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
                 </div>
             </div>
         </div>
-
         <div class="copyright">
-            <p>&copy; 2026 JR Motor. Todos los derechos reservados.</p>
-            <p>Creado Por NexoWeb.PY</p>
+            <p>&copy; 2026 JR Accesorios. Todos los derechos reservados.</p>
+            <p>Creado Por NexoWeb</p>
         </div>
     </footer>
 
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
