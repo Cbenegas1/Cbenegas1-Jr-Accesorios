@@ -565,10 +565,14 @@ footer {
 @media (max-width: 768px) {
     header {
         padding: 12px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .btn-menu-toggle {
         display: block;
+        margin-left: auto; /* Empuja el botón completamente a la derecha */
     }
 
     nav {
@@ -581,6 +585,7 @@ footer {
         flex-direction: column;
         padding: 20px 0;
         border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     nav.active {
@@ -590,6 +595,7 @@ footer {
     nav a {
         margin: 12px 0;
         text-align: center;
+        margin-left: 0;
     }
 
     .hero {
