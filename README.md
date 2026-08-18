@@ -1,4 +1,4 @@
-# JR Motor
+# JR Motors
 
 Landing page profesional para un negocio automotriz
 ubicado en Caacupé, Paraguay.
