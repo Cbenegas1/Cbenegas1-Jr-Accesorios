@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==========================================
-    // 1. PRELOADER ANIMADO
-    // ==========================================
     const preloader = document.getElementById('preloader');
     const loaderBar = document.getElementById('loaderBar');
     
@@ -24,9 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-    // ==========================================
-    // 2. REVELADO AL HACER SCROLL (SCROLL REVEAL)
-    // ==========================================
     const revealElements = document.querySelectorAll('.reveal');
 
     const revealOnScroll = () => {
@@ -42,11 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Ejecutar al cargar para elementos visibles inicialmente
+    revealOnScroll();
 
-    // ==========================================
-    // 3. CONTADORES ANIMADOS DE MÉTRICAS
-    // ==========================================
     const numeros = document.querySelectorAll('.numero');
     let animatedMetrics = false;
 
@@ -82,9 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', animateMetrics);
 
-    // ==========================================
-    // 4. MODO NEÓN (BOTÓN INTERACTIVO FLOTANTE)
-    // ==========================================
     const toggleBtn = document.createElement('button');
     toggleBtn.classList.add('btn-neon-toggle');
     toggleBtn.setAttribute('aria-label', 'Alternar Modo Neón');
@@ -98,9 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.style.borderColor = isNeon ? '#00f3ff' : 'var(--accent-color)';
     });
 
-    // ==========================================
-    // 5. CURSOR SEGUIDOR PERSONALIZADO
-    // ==========================================
     const cursorFollower = document.createElement('div');
     cursorFollower.classList.add('cursor-follower');
     document.body.appendChild(cursorFollower);
@@ -111,15 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ==========================================
-// 6. ENVÍO DE FORMULARIO A WHATSAPP
-// ==========================================
 function enviarWhatsApp(event) {
     event.preventDefault();
 
     const telefonoDestino = "595984278165";
 
-    // Obtención de valores del formulario
     const nombre = document.getElementById('nombre').value.trim();
     const telefono = document.getElementById('telefono').value.trim();
     const auto = document.getElementById('auto').value.trim();
@@ -127,7 +108,6 @@ function enviarWhatsApp(event) {
     const servicio = document.getElementById('servicio').value;
     const mensaje = document.getElementById('mensaje').value.trim();
 
-    // Estructuración del mensaje
     let textoMensaje = `*¡Hola JR Accesorios! Deseo realizar una cotización.*\n\n`;
     textoMensaje += `👤 *Nombre:* ${nombre}\n`;
     textoMensaje += `📞 *Teléfono:* ${telefono}\n`;
@@ -138,7 +118,6 @@ function enviarWhatsApp(event) {
         textoMensaje += `📝 *Detalles adicionales:* ${mensaje}\n`;
     }
 
-    // Codificación para URL y redirección
     const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(textoMensaje)}`;
     window.open(url, '_blank');
 }
