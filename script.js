@@ -121,3 +121,67 @@ function enviarWhatsApp(event) {
     const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(textoMensaje)}`;
     window.open(url, '_blank');
 }
+/* ================================
+   MENÚ MÓVIL
+   ================================ */
+
+const menuToggle = document.getElementById("menuToggle");
+const menuPrincipal = document.getElementById("menuPrincipal");
+
+if (menuToggle && menuPrincipal) {
+
+    const icono = menuToggle.querySelector("i");
+
+    menuToggle.addEventListener("click", function () {
+
+        const menuAbierto = menuPrincipal.classList.toggle("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            menuAbierto ? "true" : "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            menuAbierto ? "Cerrar menú" : "Abrir menú"
+        );
+
+        if (menuAbierto) {
+            icono.classList.remove("fa-bars");
+            icono.classList.add("fa-xmark");
+        } else {
+            icono.classList.remove("fa-xmark");
+            icono.classList.add("fa-bars");
+        }
+    });
+
+    /* Cerrar al tocar un enlace */
+    menuPrincipal.querySelectorAll("a").forEach(function (enlace) {
+
+        enlace.addEventListener("click", function () {
+            menuPrincipal.classList.remove("active");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+
+            icono.classList.remove("fa-xmark");
+            icono.classList.add("fa-bars");
+        });
+
+    });
+
+    /* Cerrar al volver a pantalla grande */
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 768) {
+            menuPrincipal.classList.remove("active");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+
+            icono.classList.remove("fa-xmark");
+            icono.classList.add("fa-bars");
+        }
+
+    });
+}
