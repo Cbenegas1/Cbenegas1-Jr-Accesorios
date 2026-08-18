@@ -572,7 +572,7 @@ footer {
 
     .btn-menu-toggle {
         display: block;
-        margin-left: auto; /* Empuja el botón completamente a la derecha */
+        margin-left: auto;
     }
 
     nav {
