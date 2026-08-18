@@ -1331,3 +1331,6 @@ footer {
         right: 15px;
     }
 }
+.btn-neon-toggle {
+    display: none !important;
+}
