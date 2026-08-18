@@ -131,15 +131,6 @@ nav a:hover::after {
     width: 100%;
 }
 
-.btn-menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 .hero {
     position: relative;
     min-height: 100vh;
@@ -562,4 +553,34 @@ footer {
     transform: translateY(0);
 }
 
+@media (max-width: 768px) {
+    header {
+        padding: 12px 5%;
+    }
+    
+    nav {
+        display: none;
+    }
 
+    .hero {
+        background-position: center center; 
+    }
+
+    .fila-doble {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-neon-toggle {
+        bottom: 85px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .btn-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+    }
+}
