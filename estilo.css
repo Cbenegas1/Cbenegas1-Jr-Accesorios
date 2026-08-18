@@ -584,3 +584,76 @@ footer {
         height: 52px;
     }
 }
+/* ================================
+   MENÚ MÓVIL
+   ================================ */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 1;
+}
+
+/* CELULAR */
+@media (max-width: 768px) {
+
+    header {
+        position: relative;
+        padding: 12px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        z-index: 1002;
+    }
+
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        background: rgba(10, 10, 12, 0.98);
+        backdrop-filter: blur(15px);
+
+        padding: 10px 5%;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transform: translateY(-10px);
+        transition: all 0.25s ease;
+
+        z-index: 1001;
+    }
+
+    /* MENÚ ABIERTO */
+    header nav.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    header nav a {
+        width: 100%;
+        padding: 15px 10px;
+        margin: 0;
+
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    header nav a:last-child {
+        border-bottom: none;
+    }
+}
