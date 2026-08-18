@@ -584,3 +584,38 @@ footer {
         height: 52px;
     }
 }
+.btn-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .btn-menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-card);
+        flex-direction: column;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 12px 0;
+        text-align: center;
+    }
+}
