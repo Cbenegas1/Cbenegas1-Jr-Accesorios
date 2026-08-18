@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => 
+document.addEventListener('DOMContentLoaded', () => {
     
     const preloader = document.getElementById('preloader');
     const loaderBar = document.getElementById('loaderBar');
