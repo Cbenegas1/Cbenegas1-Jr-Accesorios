@@ -1,6 +1,3 @@
-/* ==========================================
-   1. VARIABLES GLOBALES & MODO NEÓN
-   ========================================== */
 :root {
     --primary-color: #e63946;
     --primary-hover: #ff4d5a;
@@ -25,9 +22,6 @@ body.neon-mode {
     --shadow-glow: 0 0 25px rgba(0, 243, 255, 0.4);
 }
 
-/* ==========================================
-   2. RESET & ESTILOS BASE
-   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -43,9 +37,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================
-   3. PRELOADER ANIMADO
-   ========================================== */
 #preloader {
     position: fixed;
     inset: 0;
@@ -87,9 +78,6 @@ body {
     transition: width 0.1s linear;
 }
 
-/* ==========================================
-   4. HEADER Y NAVEGACIÓN
-   ========================================== */
 header {
     position: fixed;
     top: 0;
@@ -143,17 +131,11 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* ==========================================
-   5. HERO SECTION
-   ========================================== */
-/* Para computadoras */
 .hero {
     position: relative;
     min-height: 100vh;
-    /* Cambiamos el archivo a Jr12.jpg */
     background-image: url('Jr12.jpg'); 
     background-repeat: no-repeat;
-    /* Enfocamos hacia el centro-abajo donde está asentado el auto */
     background-position: center 80%; 
     background-size: cover;
     display: flex;
@@ -161,11 +143,6 @@ nav a:hover::after {
     justify-content: center;
     text-align: center;
     padding: 100px 20px 60px;
-}@media (max-width: 768px) {
-    .hero {
-        /* En pantallas verticales de móviles se verá perfecto centrando el auto */
-        background-position: center center; 
-    }
 }
 
 .hero-overlay {
@@ -252,13 +229,10 @@ nav a:hover::after {
     transform: translateY(-3px);
 }
 
-/* ==========================================
-   6. MÉTRICAS
-   ========================================== */
 .metricas {
     background-color: var(--secondary-color);
     padding: 50px 6%;
-    border-block: 1px solid var(--border-color); /* Borde superior e inferior */
+    border-block: 1px solid var(--border-color);
 }
 
 .contenedor-metricas {
@@ -275,9 +249,6 @@ nav a:hover::after {
     color: var(--primary-color);
 }
 
-/* ==========================================
-   7. SECCIÓN NOSOTROS
-   ========================================== */
 section {
     padding: 90px 6%;
 }
@@ -317,9 +288,6 @@ section h2 {
     line-height: 1.7;
 }
 
-/* ==========================================
-   8. GRILLAS GENERALES Y TARJETAS
-   ========================================== */
 .contenedor, .valores, .contenedor-galeria-grid, .contenedor-contacto {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -377,9 +345,6 @@ section h2 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* ==========================================
-   9. FORMULARIO Y CONTACTO (MAPA CORREGIDO)
-   ========================================== */
 .form-contacto h3 {
     margin-bottom: 25px;
     color: var(--primary-color);
@@ -457,9 +422,9 @@ section h2 {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-self: start;
 }
 
-/* Mapa delimitado dentro de la tarjeta */
 .mapa {
     width: 100%;
     height: 220px;
@@ -476,9 +441,6 @@ section h2 {
     display: block;
 }
 
-/* ==========================================
-   10. ELEMENTOS INTERACTIVOS & FLOTANTES
-   ========================================== */
 .cursor-follower {
     position: fixed;
     width: 18px;
@@ -544,9 +506,6 @@ section h2 {
     50% { transform: translateY(-8px); }
 }
 
-/* ==========================================
-   11. FOOTER
-   ========================================== */
 footer {
     background-color: var(--secondary-color);
     padding: 50px 6% 25px;
@@ -583,9 +542,6 @@ footer {
     margin-top: 30px;
 }
 
-/* ==========================================
-   12. REVELADO AL HACER SCROLL & ADAPTABILIDAD
-   ========================================== */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -606,6 +562,10 @@ footer {
         display: none;
     }
 
+    .hero {
+        background-position: center center; 
+    }
+
     .fila-doble {
         grid-template-columns: 1fr;
     }
@@ -623,9 +583,4 @@ footer {
         width: 52px;
         height: 52px;
     }
-}.info-contacto {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-self: start; /* Evita que la tarjeta se estire si el formulario de al lado es muy largo */
 }
